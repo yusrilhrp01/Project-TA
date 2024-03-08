@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload CSV File</title>
+<link rel="stylesheet" href="add-file.css">
+</head>
+<body>
+<div class="container">
+    <img class="logo" src="logo.png" alt="Logo">
+    <form action="add-file.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;">
+        <label for="fileToUpload" class="upload-btn">Pilih File CSV</label>
+        <input type="submit" value="Upload" name="submit" style="display: none;">
+    </form>
+</div>
+</body>
+</html>
