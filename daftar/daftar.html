@@ -5,43 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register Page</title>
 <link rel="stylesheet" href="daftar.css">
+<script>
+function registerUser() {
+    var form = document.getElementById("registerForm");
+    var errorDiv = document.getElementById("error_message");
+    
+    var passwordInput = document.getElementById("password");
+    var confirmPasswordInput = document.getElementById("confirm_password");
+    
+    // Check if passwords match
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        errorDiv.innerHTML = "Passwords do not match!";
+        return; // Prevent form submission if passwords don't match
+    }
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "daftar.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (xhr.responseText.trim() == "Registrasi berhasil!") {
+                // Redirect to login page if registration is successful
+                window.location.href = "../login/login.html";
+            } else {
+                // Display error message if registration fails
+                errorDiv.innerHTML = xhr.responseText;
+            }
+        }
+    };
+    xhr.send(new URLSearchParams(new FormData(form)).toString());
+}
+</script>
 </head>
 <body>
-  <h1 class="title-daftar">Daftar</h1>
-  <div class="container">
-    <div class="register-form">
-        <form action="daftar.php" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" name="confirm_password" id="confirm_password" placeholder="" required>
-            </div>
-            <button type="submit">Register Account</button>
-        </form>
+    <div class="container">
+        <div class="register-form">
+            <form id="registerForm" onsubmit="event.preventDefault(); registerUser();">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div id="error_message" class="error"></div>
+            <p>Sudah punya akun? <a href="../login/login.html">Login</a></p>
+        </div>
     </div>
-</div>
-    <script>
-        var password = document.getElementById("password"),
-            confirm_password = document.getElementById("confirm_password");
-
-        function validatePassword(){
-          if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Password tidak sesuai");
-          } else {
-            confirm_password.setCustomValidity('');
-          }
-        }
-
-        password.onchange = validatePassword;
-        confirm_pa
+</body>
+</html>

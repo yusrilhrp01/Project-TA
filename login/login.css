@@ -2,7 +2,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/BG.png'); /* Ganti dengan jalur yang benar ke gambar latar belakang */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {

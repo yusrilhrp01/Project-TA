@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upload CSV File</title>
-<link rel="stylesheet" href="add-file.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <img class="logo" src="logo.png" alt="Logo">
-    <form action="add-file.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;">
-        <label for="fileToUpload" class="upload-btn">Pilih File CSV</label>
-        <input type="submit" value="Upload" name="submit" style="display: none;">
-    </form>
-</div>
+    <div class="wrapper">
+        <div class="box">
+            <div class="input-bx">
+                <h2 class="upload-area-title">Upload File</h2>
+                <form action="">
+                    <input type="file" id="upload" accept=".csv,.xls" hidden>
+                    <label for="upload" class="uploadlabel">
+                        <span><i class="fa fa-cloud-upload"></i></span>
+                        <p>Click To Upload</p> 
+                    </label>        
+                </form>     
+            </div>
+                              
+        </div>
+    </div>
 </body>
 </html>
